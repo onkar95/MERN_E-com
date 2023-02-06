@@ -16,7 +16,7 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 const corsOptions = {
-  origin: 'https://main--velvety-lollipop-3ad0ec.netlify.app',
+  // origin: 'https://main--velvety-lollipop-3ad0ec.netlify.app',
   credentials: true,            //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 }

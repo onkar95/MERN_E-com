@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const path = require("path");
 const cors = require('cors');
@@ -11,7 +12,8 @@ const errorMiddleware = require("./middleware/error");
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "backend/config/.env" });
 }
-
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 const corsOptions = {
   origin: 'https://main--scintillating-brigadeiros-f08220.netlify.app',
@@ -19,11 +21,8 @@ const corsOptions = {
   credentials: true,            //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 }
+
 app.use(cors(corsOptions))
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb", extended: true }));
-
-
 app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload());
@@ -39,10 +38,10 @@ app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static(path.join(__dirname, "build")));
 
-app.get("*", (req, res) => {
-  res.json({ message: "backend working" });
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 // Middleware for Errors

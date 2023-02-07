@@ -31,7 +31,7 @@ import {
   CLEAR_ERRORS,
 } from "../constants/productConstants";
 import { BACKEND_URL } from "./util";
-
+axios.defaults.withCredentials = true;
 // Get All Products
 export const getProduct =
   (keyword = "", currentPage = 1, price = [0, 25000], category, ratings = 0) =>

@@ -36,15 +36,22 @@ const user = require("./routes/userRoute");
 const order = require("./routes/orderRoute");
 const payment = require("./routes/paymentRoute");
 
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "");
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
 app.use("/api/v1", product);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
 
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "frontend/build")));
 
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "frontend/build", "index.html"));
 });
 
 // Middleware for Errors

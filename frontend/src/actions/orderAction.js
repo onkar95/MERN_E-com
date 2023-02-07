@@ -22,7 +22,7 @@ import {
 
 import axios from "axios";
 import { BACKEND_URL } from "./util";
-
+axios.defaults.withCredentials = true;
 // Create Order
 export const createOrder = (order) => async (dispatch) => {
   try {

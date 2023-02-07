@@ -38,7 +38,7 @@ import {
 } from "../constants/userConstants";
 import axios from "axios";
 import { BACKEND_URL } from "./util";
-
+axios.defaults.withCredentials = true;
 // Login
 export const login = (email, password) => async (dispatch) => {
   try {

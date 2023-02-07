@@ -12,13 +12,14 @@ const errorMiddleware = require("./middleware/error");
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "backend/config/.env" });
 }
+
 const corsOptions = {
   origin: ['https://main--scintillating-brigadeiros-f08220.netlify.app', 'http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Origin', 'Content - Type', 'Authorization'],
+  allowedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers', 'Content-Type', 'Authorization'],
   credentials: true,
   optionSuccessStatus: 200,
-}
+};
 // const corsOptions = {
 //   origin: ['https://main--scintillating-brigadeiros-f08220.netlify.app', 'http://localhost:3000'],
 //   credentials: true,

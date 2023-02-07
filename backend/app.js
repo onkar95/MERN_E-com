@@ -38,7 +38,7 @@ const payment = require("./routes/paymentRoute");
 
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "");
+  res.header("Access-Control-Allow-Origin", "https://main--scintillating-brigadeiros-f08220.netlify.app");
   res.header("Access-Control-Allow-Credentials", "true");
   next();
 });

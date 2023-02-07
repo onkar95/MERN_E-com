@@ -74,9 +74,11 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 const corsOptions = {
   origin: ['https://main--scintillating-brigadeiros-f08220.netlify.app', 'http://localhost:3000'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Access-Control-Allow-Origin', 'Content-Type', 'Authorization'],
   credentials: true,
   optionSuccessStatus: 200,
-}
+};
 
 app.use(cors(corsOptions))
 app.use(express.json());

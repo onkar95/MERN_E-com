@@ -1,1 +1,1 @@
-export const BACKEND_URL = "http://localhost:4000"
+export const BACKEND_URL = "https://e-commerce-new.onrender.com"

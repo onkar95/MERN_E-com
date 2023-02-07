@@ -146,6 +146,8 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 
 // Get User Detail
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
+  const token = req.header('Authorization').split(' ')[1];
+  console.log(token);
   const user = await User.findById(req.user.id);
 
   res.status(200).json({

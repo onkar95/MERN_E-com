@@ -52,7 +52,7 @@ export const login = (email, password) => async (dispatch) => {
       { email, password },
       config
     );
-
+    localStorage.setItem("token", data?.token)
     dispatch({ type: LOGIN_SUCCESS, payload: data?.user });
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
@@ -67,7 +67,7 @@ export const register = (userData) => async (dispatch) => {
     const config = { headers: { "Content-Type": "multipart/form-data" } };
 
     const { data } = await axios.post(`${BACKEND_URL}/api/v1/register`, userData, config);
-
+    localStorage.setItem("token", data?.token)
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({
@@ -81,8 +81,14 @@ export const register = (userData) => async (dispatch) => {
 export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
+    const token = localStorage.getItem("token")
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }
+    const { data } = await axios.get(`${BACKEND_URL}/api/v1/me`, config);
 
-    const { data } = await axios.get(`${BACKEND_URL}/api/v1/me`);
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {

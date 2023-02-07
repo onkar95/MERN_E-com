@@ -12,23 +12,22 @@ const errorMiddleware = require("./middleware/error");
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "backend/config/.env" });
 }
-
 const corsOptions = {
   origin: ['https://main--scintillating-brigadeiros-f08220.netlify.app', 'http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Access-Control-Allow-Origin', 'Content-Type', 'Authorization'],
+  allowedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Origin', 'Content - Type', 'Authorization'],
   credentials: true,
   optionSuccessStatus: 200,
 }
+// const corsOptions = {
+//   origin: ['https://main--scintillating-brigadeiros-f08220.netlify.app', 'http://localhost:3000'],
+//   credentials: true,
+//   optionSuccessStatus: 200,
+// }
 app.use(cors(corsOptions))
-
 app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb", extended: true }));
-
-
-
-app.use(express.json());
 app.use(cookieParser());
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(fileUpload());
 
 // Route Imports
@@ -36,6 +35,8 @@ const product = require("./routes/productRoute");
 const user = require("./routes/userRoute");
 const order = require("./routes/orderRoute");
 const payment = require("./routes/paymentRoute");
+
+
 
 
 app.use("/api/v1", product);

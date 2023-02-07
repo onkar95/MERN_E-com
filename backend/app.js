@@ -70,6 +70,14 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "backend/config/config.env" });
 }
 
+
+const corsOptions = {
+  origin: ['https://main--scintillating-brigadeiros-f08220.netlify.app', 'http://localhost:3000'],
+  credentials: true,
+  optionSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions))
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));

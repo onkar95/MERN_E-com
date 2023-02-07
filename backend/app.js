@@ -15,12 +15,12 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
-// const corsOptions = {
-//   // origin: 'https://main--scintillating-brigadeiros-f08220.netlify.app',
-//   origin: 'http://localhost:3000',
-//   credentials: true,            //access-control-allow-credentials:true
-//   optionSuccessStatus: 200,
-// }
+const corsOptions = {
+  origin: 'https://main--scintillating-brigadeiros-f08220.netlify.app',
+  // origin: 'http://localhost:3000',
+  credentials: true,            //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+}
 
 app.use(cors())
 app.use(express.json());

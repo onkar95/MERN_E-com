@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 const corsOptions = {
   origin: ['https://main--scintillating-brigadeiros-f08220.netlify.app', 'http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers', 'Content-Type', 'Authorization'],
+  allowedHeaders: ['Access-Control-Allow-Origin', 'Content-Type', 'Authorization'],
   credentials: true,
   optionSuccessStatus: 200,
 };

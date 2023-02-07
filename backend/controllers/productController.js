@@ -16,7 +16,6 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 
   const imagesLinks = [];
 
-
   for (let i = 0; i < images.length; i++) {
     const result = await cloudinary.v2.uploader.upload(images[i], {
       folder: "products",
@@ -27,7 +26,6 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
       url: result.secure_url,
     });
   }
-
 
   req.body.images = imagesLinks;
   req.body.user = req.user.id;
@@ -55,7 +53,6 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
 
   apiFeature.pagination(resultPerPage);
 
-  products = await apiFeature.query;
 
   res.status(200).json({
     success: true,
@@ -222,7 +219,6 @@ exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
 
 // Delete Review
 exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
-
   const product = await Product.findById(req.query.productId);
 
   if (!product) {

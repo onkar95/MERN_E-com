@@ -14,9 +14,10 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 }
 
 const corsOptions = {
-  origin: 'https://main--scintillating-brigadeiros-f08220.netlify.app',
-  // origin: 'http://localhost:3000',
-  credentials: true,            //access-control-allow-credentials:true
+  origin: ['https://main--scintillating-brigadeiros-f08220.netlify.app', 'http://localhost:3000'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Access-Control-Allow-Origin', 'Content-Type', 'Authorization'],
+  credentials: true,
   optionSuccessStatus: 200,
 }
 app.use(cors(corsOptions))
@@ -36,12 +37,6 @@ const user = require("./routes/userRoute");
 const order = require("./routes/orderRoute");
 const payment = require("./routes/paymentRoute");
 
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://main--scintillating-brigadeiros-f08220.netlify.app");
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
 
 app.use("/api/v1", product);
 app.use("/api/v1", user);

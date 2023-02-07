@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <div className="contactContainer">
       <a className="mailBtn" href="mailto:onkarkotule95@gmail.com">
-        <Button>Contact: mymailforonkar@gmail.com</Button>
+        <Button>Contact: onkar@gmail.com</Button>
       </a>
     </div>
   );
